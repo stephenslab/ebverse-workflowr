@@ -1,20 +1,8 @@
 ---
-title: cross-context factors
+title: ebverse demos and benchmarks
 site: workflowr::wflow_site
 output: workflowr::wflow_html
 ---
 
-**Analyses:**
-
-+ [Prepare the MVA data set for analysis with NMF](mva_prep.html)
-
-+ [NMF+CC analysis of the MVA data set](mva.html)
-
-+ [NMF+CC analysis of the combined MVA + LPS data](mva_lps.html)
-
-+ [NMF+CC analysis of the combined MVA + LPS + PME-seq data](mva_lps_pmeseq.html)
-
-+ [NMF+CC analysis of the Stancil et al pancreas data](pancreas_lsa.html)
-
-+ [NMF analysis of the Array-seq data](arrayseq.html)
+*Add links here.*
 
