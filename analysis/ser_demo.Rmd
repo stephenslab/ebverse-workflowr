@@ -1,5 +1,5 @@
 ---
-title: Single effect regression design and implementation
+title: "Single effect regression model: design and implementation"
 author: Peter Carbonetto
 output: workflowr::wflow_html
 ---
