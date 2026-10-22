@@ -1,0 +1,25 @@
+---
+title: Single effect regression design and implementation
+author: Peter Carbonetto
+output: workflowr::wflow_html
+---
+
+*Add text here.*
+
+```{r knitr-opts, include=FALSE}
+knitr::opts_chunk$set(comment = "#",collapse = TRUE,results = "hold",
+                      fig.align = "center",dpi = 120)
+```
+
+Load the susieR and ebverse packages:
+
+```{r load-pkgs}
+library(susieR)
+library(ebverse)
+```
+
+Set the seed to ensure that the results are reproducible:
+
+```{r set-seed}
+set.seed(1)
+```
