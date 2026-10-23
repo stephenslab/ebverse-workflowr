@@ -23,3 +23,29 @@ Set the seed to ensure that the results are reproducible:
 ```{r set-seed}
 set.seed(1)
 ```
+
+Add text here.
+
+```{r load-data}
+load(file.path(system.file(package="ebverse"),"datasets/jsm_data.RData"))
+n <- nrow(X)
+dim(X)
+```
+
+Fit a single effect regression using the susieR package:
+
+```{r}
+fit_susie <- susie(X,y,L = 1)
+```
+
+Add text here.
+
+```{r pip-plot-susie, fig.height=2.25, fig.width=5}
+par(mar = c(4,4,2,1))
+pips <- fit_susie$pip
+plot(pips,pch = 20,xlab = "SNP",ylab = "PIP")
+j <- fit_susie$sets$cs[[1]]
+points(j,pips[j],pch = 1,col = "dodgerblue",cex = 1.25)
+j <- which(b_true != 0)
+points(j,pips[j],pch = 20,col = "red")
+```
