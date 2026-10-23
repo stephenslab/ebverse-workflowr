@@ -35,7 +35,7 @@ dim(X)
 Fit a single effect regression using the susieR package:
 
 ```{r}
-fit_susie <- susie(X,y,L = 1)
+fit_susie <- susie(X,y,L = 1,standardize = FALSE)
 ```
 
 Add text here.
