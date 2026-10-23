@@ -15,7 +15,7 @@ Load the susieR and ebverse packages:
 
 ```{r load-pkgs}
 library(susieR)
-# library(ebverse)
+library(ebverse)
 ```
 
 Set the seed to ensure that the results are reproducible:
