@@ -55,7 +55,8 @@ Add text here.
 
 ```{r ser}
 fit0 <- init_ser_model_normal(J,
-  prior = list(prob = 1/J,prior_variance = fit_susie$V))
+  prior = list(prob = 1/J,prior_variance = fit_susie$V),
+  control = list(estimate_prior_variance = FALSE))
 X <- scale(X,center = TRUE,scale = FALSE)
 y <- y - mean(y)
 xx <- colSums(X^2)
@@ -68,11 +69,11 @@ fit_ser <- fit_ser_model(fit0,ser_data)
 Add text there.
 
 ```{r}
-b1_susie <- fit_susie$alpha * fit_susie$mu
+pm_susie <- fit_susie$alpha * fit_susie$mu
 range(fit_susie$pip - fit_ser$posterior[,"pip"])
-range(b1_susie - fit_ser$posterior[,"b1"])
+range(pm_susie - fit_ser$posterior[,"post_mean"])
 cat("susie logBF:",format(fit_susie$lbf,digits = 10),"\n")
-cat("SER logBF:",format(fit_ser$lbf,digits = 10),"\n")
+cat("SER logBF:  ",format(fit_ser$lbf,digits = 10),"\n")
 ```
 
 Add text here.
@@ -82,7 +83,16 @@ par(mar = c(4,4,2,1),mfrow = c(1,2))
 plot(fit_susie$pip,fit_ser$posterior[,"pip"],pch = 20,
      xlab = "susieR",ylab = "ebverse",main = "PIPs")
 abline(a = 0,b = 1,lty = "dotted",col = "magenta")
-plot(b1_susie,fit_ser$posterior[,"b1"],pch = 20,
+plot(pm_susie,fit_ser$posterior[,"post_mean"],pch = 20,
      xlab = "susieR",ylab = "ebverse",main = "posterior mean coefs")
 abline(a = 0,b = 1,lty = "dotted",col = "magenta")
+```
+
+```{r}
+fit0 <- init_ser_model_normal(J,
+  prior = list(prob = 1/J,prior_variance = 1),
+  control = list(verbose = "detailed"))
+fit_ser <- fit_ser_model(fit0,ser_data)
+cat("susie s0:",format(fit_susie$V,digits = 8),"\n")
+cat("SER s0:  ",format(fit_ser$prior$prior_variance,digits = 8),"\n")
 ```
