@@ -15,7 +15,7 @@ Load the susieR and ebverse packages:
 
 ```{r load-pkgs}
 library(susieR)
-library(ebverse)
+# library(ebverse)
 ```
 
 Set the seed to ensure that the results are reproducible:
@@ -53,16 +53,19 @@ points(j,pips[j],pch = 20,col = "red")
 
 Add text here.
 
-```{r ser}
-fit0 <- init_ser_model_normal(J,
-  prior = list(prob = 1/J,prior_variance = fit_susie$V),
-  control = list(estimate_prior_variance = FALSE))
+```{r ser-data}
 X <- scale(X,center = TRUE,scale = FALSE)
 y <- y - mean(y)
 xx <- colSums(X^2)
 bhat <- drop(t(X) %*% y)/xx
 s <- fit_susie$sigma2/xx
 ser_data <- cbind(bhat = bhat,s = s)
+```
+
+Add text here.
+
+```{r ser}
+fit0 <- init_ser_model_normal(J,control = list(verbose = "detailed"))
 fit_ser <- fit_ser_model(fit0,ser_data)
 ```
 
@@ -72,6 +75,8 @@ Add text there.
 pm_susie <- fit_susie$alpha * fit_susie$mu
 range(fit_susie$pip - fit_ser$posterior[,"pip"])
 range(pm_susie - fit_ser$posterior[,"post_mean"])
+cat("susie s0:",format(fit_susie$V,digits = 8),"\n")
+cat("SER s0:  ",format(fit_ser$prior$prior_variance,digits = 8),"\n")
 cat("susie logBF:",format(fit_susie$lbf,digits = 10),"\n")
 cat("SER logBF:  ",format(fit_ser$lbf,digits = 10),"\n")
 ```
@@ -88,11 +93,3 @@ plot(pm_susie,fit_ser$posterior[,"post_mean"],pch = 20,
 abline(a = 0,b = 1,lty = "dotted",col = "magenta")
 ```
 
-```{r}
-fit0 <- init_ser_model_normal(J,
-  prior = list(prob = 1/J,prior_variance = 1),
-  control = list(verbose = "detailed"))
-fit_ser <- fit_ser_model(fit0,ser_data)
-cat("susie s0:",format(fit_susie$V,digits = 8),"\n")
-cat("SER s0:  ",format(fit_ser$prior$prior_variance,digits = 8),"\n")
-```
