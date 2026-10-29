@@ -62,11 +62,15 @@ s <- fit_susie$sigma2/xx
 ser_data <- cbind(bhat = bhat,s = s)
 ```
 
-Add text here.
+Test re-fitting of model:
 
 ```{r ser}
 fit0 <- init_ser_model_normal(J,control = list(verbose = "detailed"))
-fit_ser <- fit_ser_model(fit0,ser_data)
+fit0$control$paramtol <- 1e-12
+fit0$control$maxiter  <- 2
+fit_ser <- fit_ser_model(fit0,ser_data,return_data = TRUE)
+fit_ser$control$maxiter <- 100
+fit_ser <- fit_ser_model(fit_ser)
 ```
 
 Add text there.
@@ -74,7 +78,7 @@ Add text there.
 ```{r}
 pm_susie <- fit_susie$alpha * fit_susie$mu
 range(fit_susie$pip - fit_ser$posterior[,"pip"])
-range(pm_susie - fit_ser$posterior[,"post_mean"])
+range(pm_susie - fit_ser$posterior[,"mean"])
 cat("susie s0:",format(fit_susie$V,digits = 8),"\n")
 cat("SER s0:  ",format(fit_ser$prior$prior_variance,digits = 8),"\n")
 cat("susie logBF:",format(fit_susie$lbf,digits = 10),"\n")
@@ -88,7 +92,7 @@ par(mar = c(4,4,2,1),mfrow = c(1,2))
 plot(fit_susie$pip,fit_ser$posterior[,"pip"],pch = 20,
      xlab = "susieR",ylab = "ebverse",main = "PIPs")
 abline(a = 0,b = 1,lty = "dotted",col = "magenta")
-plot(pm_susie,fit_ser$posterior[,"post_mean"],pch = 20,
+plot(pm_susie,fit_ser$posterior[,"mean"],pch = 20,
      xlab = "susieR",ylab = "ebverse",main = "posterior mean coefs")
 abline(a = 0,b = 1,lty = "dotted",col = "magenta")
 ```
