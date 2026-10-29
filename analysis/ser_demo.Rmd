@@ -55,17 +55,14 @@ Add text here.
 
 ```{r ser-data}
 X <- scale(X,center = TRUE,scale = FALSE)
-y <- y - mean(y)
-xx <- colSums(X^2)
-bhat <- drop(t(X) %*% y)/xx
-s <- fit_susie$sigma2/xx
-ser_data <- cbind(bhat = bhat,s = s)
+y <- drop(scale(y,center = TRUE,scale = FALSE))
+ser_data <- prepare_ser_data(X = X,y = y,sigma = fit_susie$sigma2)
 ```
 
 Test re-fitting of model:
 
 ```{r ser}
-fit0 <- init_ser_model_normal(J,control = list(verbose = "detailed"))
+fit0 <- init_ser_model(ser_data,control = list(verbose = "detailed"))
 fit0$control$paramtol <- 1e-12
 fit0$control$maxiter  <- 2
 fit_ser <- fit_ser_model(fit0,ser_data,return_data = TRUE)
