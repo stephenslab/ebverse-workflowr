@@ -132,5 +132,5 @@ class(dat) <- c("susie_full_data","susie_data","list")
 Fit a SuSiE model using the new interface:
 
 ```{r susie-ebverse, eval=FALSE}
-fit_susie_ebverse <- init_susie_model(dat,L = 2)
+fit_susie_ebverse <- init_susie_model(J,L = 2)
 ```
