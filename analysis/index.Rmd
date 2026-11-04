@@ -4,5 +4,5 @@ site: workflowr::wflow_site
 output: workflowr::wflow_html
 ---
 
-+ [Single effect regression model: design and implementation](ser_demo.html)
++ [SuSiE: design and implementation](ser_demo.html)
 

@@ -1,5 +1,5 @@
 ---
-title: "Single effect regression model: design and implementation"
+title: "SuSiE: design and implementation"
 author: Peter Carbonetto
 output: workflowr::wflow_html
 ---
@@ -33,6 +33,9 @@ J <- ncol(X)
 dim(X)
 ```
 
+Single effect regression
+------------------------
+
 Fit a single effect regression using the susieR package:
 
 ```{r susie}
@@ -56,16 +59,16 @@ Add text here.
 ```{r ser-data}
 X <- scale(X,center = TRUE,scale = FALSE)
 y <- drop(scale(y,center = TRUE,scale = FALSE))
-ser_data <- prepare_ser_data(X = X,y = y,sigma = fit_susie$sigma2)
+dat <- prepare_ser_data(X = X,y = y,residual_variance = fit_susie$sigma2)
 ```
 
-Test re-fitting of model:
+Test refitting of model:
 
 ```{r ser}
-fit0 <- init_ser_model(ser_data,control = list(verbose = "detailed"))
+fit0 <- init_ser_model(J,control = list(verbose = "detailed"))
 fit0$control$paramtol <- 1e-12
 fit0$control$maxiter  <- 2
-fit_ser <- fit_ser_model(fit0,ser_data,return_data = TRUE)
+fit_ser <- fit_ser_model(fit0,dat,return_data = TRUE)
 fit_ser$control$maxiter <- 100
 fit_ser <- fit_ser_model(fit_ser)
 ```
@@ -74,8 +77,8 @@ Add text there.
 
 ```{r}
 pm_susie <- fit_susie$alpha * fit_susie$mu
-range(fit_susie$pip - fit_ser$posterior[,"pip"])
-range(pm_susie - fit_ser$posterior[,"mean"])
+range(fit_susie$pip - fit_ser$posterior$pip)
+range(pm_susie - fit_ser$posterior$mean)
 cat("susie s0:",format(fit_susie$V,digits = 8),"\n")
 cat("SER s0:  ",format(fit_ser$prior$prior_variance,digits = 8),"\n")
 cat("susie logBF:",format(fit_susie$lbf,digits = 10),"\n")
@@ -86,11 +89,48 @@ Add text here.
 
 ```{r, fig.height=2.75, fig.width=5.25}
 par(mar = c(4,4,2,1),mfrow = c(1,2))
-plot(fit_susie$pip,fit_ser$posterior[,"pip"],pch = 20,
+plot(fit_susie$pip,fit_ser$posterior$pip,pch = 20,
      xlab = "susieR",ylab = "ebverse",main = "PIPs")
 abline(a = 0,b = 1,lty = "dotted",col = "magenta")
-plot(pm_susie,fit_ser$posterior[,"mean"],pch = 20,
+plot(pm_susie,fit_ser$posterior$mean,pch = 20,
      xlab = "susieR",ylab = "ebverse",main = "posterior mean coefs")
 abline(a = 0,b = 1,lty = "dotted",col = "magenta")
 ```
 
+SuSiE
+-----
+
+Fit a single effect regression with L = 2 single effects using the
+susieR package:
+
+```{r susie-two-effects}
+fit_susie <- susie(X,y,L = 2,standardize = FALSE)
+```
+
+Add text here.
+
+```{r pip-plot-susie-two-effects, fig.height=2.25, fig.width=5}
+par(mar = c(4,4,2,1))
+pips <- fit_susie$pip
+plot(pips,pch = 20,xlab = "SNP",ylab = "PIP")
+j <- fit_susie$sets$cs[[1]]
+points(j,pips[j],pch = 1,col = "dodgerblue",cex = 1.5)
+j <- fit_susie$sets$cs[[2]]
+points(j,pips[j],pch = 1,col = "darkorange",cex = 1.5)
+j <- which(b_true != 0)
+points(j,pips[j],pch = 20,col = "red")
+```
+
+Create a susie data set manually:
+
+```{r susie-data, eval=FALSE}
+dat <- list(n = n,nvar = J,X = X,y = y,
+            ss = prepare_ser_data(X = X,y = y))
+class(dat) <- c("susie_full_data","susie_data","list")
+```
+
+Fit a SuSiE model using the new interface:
+
+```{r susie-ebverse, eval=FALSE}
+fit_susie_ebverse <- init_susie_model(dat,L = 2)
+```
