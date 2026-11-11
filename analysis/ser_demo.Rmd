@@ -14,7 +14,7 @@ knitr::opts_chunk$set(comment = "#",collapse = TRUE,results = "hold",
 Load the susieR and ebverse packages:
 
 ```{r load-pkgs}
-library(susieR)
+# library(susieR)
 # library(ebverse)
 ```
 
@@ -59,13 +59,12 @@ Add text here.
 ```{r ser-data}
 X <- scale(X,center = TRUE,scale = FALSE)
 y <- drop(scale(y,center = TRUE,scale = FALSE))
+colnames(X) <- paste0("rs",1:J)
 dat <- prepare_ser_data(X = X,y = y,residual_variance = fit_susie$sigma2)
 ```
 
-Test refitting of model:
-
 ```{r ser}
-fit0 <- init_ser_model(J,control = list(verbose = "detailed"))
+fit0 <- init_ser_model(colnames(X),control = list(verbose = "detailed"))
 fit0$control$paramtol <- 1e-12
 fit0$control$maxiter  <- 2
 fit_ser <- fit_ser_model(fit0,dat,return_data = TRUE)
@@ -123,14 +122,33 @@ points(j,pips[j],pch = 20,col = "red")
 
 Create a susie data set manually:
 
-```{r susie-data, eval=FALSE}
-dat <- list(n = n,nvar = J,X = X,y = y,
+```{r susie-data}
+dat <- list(n = n,nvar = J,X = X,y = y,var_y = var(y),
             ss = prepare_ser_data(X = X,y = y))
 class(dat) <- c("susie_full_data","susie_data","list")
 ```
 
-Fit a SuSiE model using the new interface:
+Fit a SuSiE model using the new interface. Also test refitting:
 
-```{r susie-ebverse, eval=FALSE}
-fit_susie_ebverse <- init_susie_model(J,L = 2)
+```{r susie-ebverse}
+fit_susie_eb <- init_susie_model(colnames(X),L = 2,
+ 						         control = list(maxiter = 4,paramtol = 1e-8))
+fit_susie_eb <- fit_susie_model(fit_susie_eb,dat,return_data = TRUE)
+fit_susie_eb <- fit_susie_model(fit_susie_eb,dat,return_data = TRUE)
 ```
+
+Add text here.
+
+```{r susie-ebverse-checks}
+pm_susie <- fit_susie$alpha * fit_susie$mu
+print(max(fit_susie$elbo) - fit_susie_eb$elbo)
+print(fit_susie$sigma2 - fit_susie_eb$residual_variance)
+print(fit_susie_eb$ser[[1]]$prior$prior_variance - fit_susie$V[1])
+print(fit_susie_eb$ser[[2]]$prior$prior_variance - fit_susie$V[2])
+print(range(fit_susie_eb$ser[[1]]$posterior$pip - fit_susie$alpha[1,]))
+print(range(fit_susie_eb$ser[[2]]$posterior$pip - fit_susie$alpha[2,]))
+print(range(fit_susie_eb$ser[[1]]$posterior$mean - pm_susie[1,]))
+print(range(fit_susie_eb$ser[[2]]$posterior$mean - pm_susie[2,]))
+```
+
+TO DO: Test `init_susie_model` and `fit_susie_model` with $L = 1$.
