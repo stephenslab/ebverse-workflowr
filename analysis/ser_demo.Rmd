@@ -30,6 +30,8 @@ Add text here.
 load(file.path(system.file(package="ebverse"),"datasets/jsm_data.RData"))
 n <- nrow(X)
 J <- ncol(X)
+rownames(X) <- paste0("s",1:n)
+names(y) <- paste0("s",1:n)
 dim(X)
 ```
 
@@ -104,6 +106,9 @@ susieR package:
 
 ```{r susie-two-effects}
 fit_susie <- susie(X,y,L = 2,standardize = FALSE)
+fit_susie_ss <- susie_suff_stat(crossprod(X),drop(crossprod(X,y)),
+                                drop(crossprod(y)),n,L = 2,standardize = FALSE)
+fit_susie$KL - fit_susie$KL
 ```
 
 Add text here.
@@ -131,6 +136,7 @@ class(dat) <- c("susie_full_data","susie_data","list")
 Fit a SuSiE model using the new interface. Also test refitting:
 
 ```{r susie-ebverse}
+dat <- prepare_susie_full_data(X,y)
 fit_susie_eb <- init_susie_model(colnames(X),L = 2,
  						         control = list(maxiter = 4,paramtol = 1e-8))
 fit_susie_eb <- fit_susie_model(fit_susie_eb,dat,return_data = TRUE)
@@ -141,14 +147,15 @@ Add text here.
 
 ```{r susie-ebverse-checks}
 pm_susie <- fit_susie$alpha * fit_susie$mu
-print(max(fit_susie$elbo) - fit_susie_eb$elbo)
-print(fit_susie$sigma2 - fit_susie_eb$residual_variance)
-print(fit_susie_eb$ser[[1]]$prior$prior_variance - fit_susie$V[1])
-print(fit_susie_eb$ser[[2]]$prior$prior_variance - fit_susie$V[2])
-print(range(fit_susie_eb$ser[[1]]$posterior$pip - fit_susie$alpha[1,]))
-print(range(fit_susie_eb$ser[[2]]$posterior$pip - fit_susie$alpha[2,]))
-print(range(fit_susie_eb$ser[[1]]$posterior$mean - pm_susie[1,]))
-print(range(fit_susie_eb$ser[[2]]$posterior$mean - pm_susie[2,]))
+max(fit_susie$elbo) - fit_susie_eb$elbo
+fit_susie$KL - sapply(fit_susie_eb$ser,"[[","KL")
+fit_susie$sigma2 - fit_susie_eb$residual_variance
+fit_susie_eb$ser[[1]]$prior$prior_variance - fit_susie$V[1]
+fit_susie_eb$ser[[2]]$prior$prior_variance - fit_susie$V[2]
+range(fit_susie_eb$ser[[1]]$posterior$pip - fit_susie$alpha[1,])
+range(fit_susie_eb$ser[[2]]$posterior$pip - fit_susie$alpha[2,])
+range(fit_susie_eb$ser[[1]]$posterior$mean - pm_susie[1,])
+range(fit_susie_eb$ser[[2]]$posterior$mean - pm_susie[2,])
 ```
 
 TO DO: Test `init_susie_model` and `fit_susie_model` with $L = 1$.
