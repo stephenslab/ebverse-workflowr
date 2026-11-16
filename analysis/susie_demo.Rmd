@@ -105,9 +105,18 @@ Fit a single effect regression with L = 2 single effects using the
 susieR package:
 
 ```{r susie-two-effects}
-fit_susie <- susie(X,y,L = 2,standardize = FALSE)
-fit_susie_ss <- susie_suff_stat(crossprod(X),drop(crossprod(X,y)),
-                                drop(crossprod(y)),n,L = 2,standardize = FALSE)
+fit_susie <- susie(X,y,L = 2,standardize = FALSE,verbose = TRUE)
+fit_susie_ss <- susie_suff_stat(XtX = crossprod(X),
+                                Xty = drop(crossprod(X,y)),
+                                yty = drop(crossprod(y)),
+								n = n,L = 2,verbose = TRUE)
+dat <- prepare_mlm_full_data(X,y,standardize = FALSE)
+ss <- univariate_regression(X,y)
+fit_susie_rss <- susie_rss(bhat = ss$betahat,
+                           shat = ss$sebetahat,
+						   R = cor(X),
+						   L = 2,
+						   verbose = TRUE)
 fit_susie$KL - fit_susie$KL
 ```
 
@@ -125,18 +134,10 @@ j <- which(b_true != 0)
 points(j,pips[j],pch = 20,col = "red")
 ```
 
-Create a susie data set manually:
-
-```{r susie-data}
-dat <- list(n = n,nvar = J,X = X,y = y,var_y = var(y),
-            ss = prepare_ser_data(X = X,y = y))
-class(dat) <- c("susie_full_data","susie_data","list")
-```
-
 Fit a SuSiE model using the new interface. Also test refitting:
 
 ```{r susie-ebverse}
-dat <- prepare_susie_full_data(X,y)
+dat <- prepare_mlm_full_data(X,y)
 fit_susie_eb <- init_susie_model(colnames(X),L = 2,
  						         control = list(maxiter = 4,paramtol = 1e-8))
 fit_susie_eb <- fit_susie_model(fit_susie_eb,dat,return_data = TRUE)
