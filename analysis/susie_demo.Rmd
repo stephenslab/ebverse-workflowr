@@ -14,8 +14,8 @@ knitr::opts_chunk$set(comment = "#",collapse = TRUE,results = "hold",
 Load the susieR and ebverse packages:
 
 ```{r load-pkgs}
-# library(susieR)
-# library(ebverse)
+library(susieR)
+library(ebverse)
 ```
 
 Set the seed to ensure that the results are reproducible:
