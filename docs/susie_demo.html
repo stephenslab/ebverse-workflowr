@@ -279,7 +279,7 @@ $(document).ready(function () {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -290,8 +290,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -300,13 +300,13 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2026-11-11
+<strong>Last updated:</strong> 2026-11-16
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong>
@@ -330,21 +330,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -435,15 +432,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomstephenslabebverseworkflowrtree7967f81c3f29fc985765d93b3353098a3b2fc951targetblank7967f81a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomstephenslabebverseworkflowrtree19017ff580b1b471614ec850f35b218e4381991dtargetblank19017ffa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/stephenslab/ebverse-workflowr/tree/7967f81c3f29fc985765d93b3353098a3b2fc951" target="_blank">7967f81</a>
+<a href="https://github.com/stephenslab/ebverse-workflowr/tree/19017ff580b1b471614ec850f35b218e4381991d" target="_blank">19017ff</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomstephenslabebverseworkflowrtree7967f81c3f29fc985765d93b3353098a3b2fc951targetblank7967f81a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomstephenslabebverseworkflowrtree19017ff580b1b471614ec850f35b218e4381991dtargetblank19017ffa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -453,7 +450,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/stephenslab/ebverse-workflowr/tree/7967f81c3f29fc985765d93b3353098a3b2fc951" target="_blank">7967f81</a>.
+<a href="https://github.com/stephenslab/ebverse-workflowr/tree/19017ff580b1b471614ec850f35b218e4381991d" target="_blank">19017ff</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -467,8 +464,8 @@ depends on. Below is the status of the Git repository when the results
 were generated:
 </p>
 <pre><code>
-Unstaged changes:
-    Modified:   analysis/ser_demo.Rmd
+Ignored files:
+    Ignored:    analysis/figure/
 
 </code></pre>
 <p>
@@ -485,8 +482,8 @@ have uncommitted changes.
 <div id="versions" class="tab-pane fade">
 <p>
 These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/ser_demo.Rmd</code>) and HTML
-(<code>docs/ser_demo.html</code>) files. If you’ve configured a remote
+made to the R Markdown (<code>analysis/susie_demo.Rmd</code>) and HTML
+(<code>docs/susie_demo.html</code>) files. If you’ve configured a remote
 Git repository (see <code>?wflow_git_remote</code>), click on the
 hyperlinks in the table below to view the files as they were in that
 past version.
@@ -518,16 +515,16 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/7967f81c3f29fc985765d93b3353098a3b2fc951/analysis/ser_demo.Rmd" target="_blank">7967f81</a>
+<a href="https://github.com/stephenslab/ebverse-workflowr/blob/19017ff580b1b471614ec850f35b218e4381991d/analysis/susie_demo.Rmd" target="_blank">19017ff</a>
 </td>
 <td>
 Peter Carbonetto
 </td>
 <td>
-2026-11-04
+2026-11-16
 </td>
 <td>
-Updated the init_susie_model() call.
+wflow_publish("susie_demo.Rmd", verbose = T, view = F)
 </td>
 </tr>
 <tr>
@@ -535,84 +532,16 @@ Updated the init_susie_model() call.
 Rmd
 </td>
 <td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/3a45582e900b38e0e9c194b7ad4185836ba37e8e/analysis/ser_demo.Rmd" target="_blank">3a45582</a>
+<a href="https://github.com/stephenslab/ebverse-workflowr/blob/7b03fc01e5283c97c3d147477ff0b2544c8f8eac/analysis/susie_demo.Rmd" target="_blank">7b03fc0</a>
 </td>
 <td>
 Peter Carbonetto
 </td>
 <td>
-2026-11-04
+2026-11-16
 </td>
 <td>
-Incorporating susie into the ser_demo.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/60184bcbf4a1b8d3401a682d7c86c8afcaf51d7b/analysis/ser_demo.Rmd" target="_blank">60184bc</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-29
-</td>
-<td>
-Made use of the prepare_ser_data() function.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/7ff5ff3b42313aea86d73bd4134a4245f4cf805d/analysis/ser_demo.Rmd" target="_blank">7ff5ff3</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-29
-</td>
-<td>
-Added re-fitting of ser model to ser_demo.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/76a4b321a23662e1f79a41eb93383192b511afe2/analysis/ser_demo.Rmd" target="_blank">76a4b32</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-27
-</td>
-<td>
-Updated the ser demo to estimate s0.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/c9bc0f158cc10d0ffc8bbde081210cbb6ccea622/analysis/ser_demo.Rmd" target="_blank">c9bc0f1</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-23
-</td>
-<td>
-Tested the prior variance update for the SER model.
+wflow_rename("ser_demo.Rmd","susie_demo.Rmd")
 </td>
 </tr>
 <tr>
@@ -620,153 +549,16 @@ Tested the prior variance update for the SER model.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/stephenslab/ebverse-workflowr/753ca924635b3f51aa9e93fc25879c59b92d9d14/docs/ser_demo.html" target="_blank">753ca92</a>
+<a href="https://rawcdn.githack.com/stephenslab/ebverse-workflowr/7b03fc01e5283c97c3d147477ff0b2544c8f8eac/docs/susie_demo.html" target="_blank">7b03fc0</a>
 </td>
 <td>
 Peter Carbonetto
 </td>
 <td>
-2026-10-23
+2026-11-16
 </td>
 <td>
-Ran wflow_publish("ser_demo.Rmd").
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/9128c04113a8d621f5196b053bce4b9d31faf797/analysis/ser_demo.Rmd" target="_blank">9128c04</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-23
-</td>
-<td>
-wflow_publish("ser_demo.Rmd", verbose = T, view = F)
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/bb58c120119d28c9de13fa87c1db845961153f08/analysis/ser_demo.Rmd" target="_blank">bb58c12</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-23
-</td>
-<td>
-Added a basic comparison of the ebverse SER implementation to susieR
-with L = 1.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/92030ccb121259e7102291672a69f2ab974ee4cc/analysis/ser_demo.Rmd" target="_blank">92030cc</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-22
-</td>
-<td>
-Small fix to ser_demo.Rmd.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/2fa8c8bbb48f8308d99f84cd6ebbe0531f32b316/analysis/ser_demo.Rmd" target="_blank">2fa8c8b</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-22
-</td>
-<td>
-Added susie results with L = 1 to ser_demo workflowr.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/stephenslab/ebverse-workflowr/c91b016b840715f5dd763e055788ac011e4238fa/docs/ser_demo.html" target="_blank">c91b016</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-22
-</td>
-<td>
-First build of the ser_demo workflowr.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/afa3972e3889177e3627b5f056d47a873d06907a/analysis/ser_demo.Rmd" target="_blank">afa3972</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-22
-</td>
-<td>
-workflowr::wflow_publish("ser_demo.Rmd")
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/stephenslab/ebverse-workflowr/90487e4a0c34fb6892c03eda31513a4f642eb633/docs/ser_demo.html" target="_blank">90487e4</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/efc659ee518622427d5edff170d5965ce44a0945/analysis/ser_demo.Rmd" target="_blank">efc659e</a>
-</td>
-<td>
-Peter Carbonetto
-</td>
-<td>
-2026-10-22
-</td>
-<td>
-workflowr::wflow_publish("ser_demo.Rmd")
+wflow_rename("ser_demo.Rmd","susie_demo.Rmd")
 </td>
 </tr>
 </tbody>
@@ -778,23 +570,22 @@ workflowr::wflow_publish("ser_demo.Rmd")
 </div>
 <p><em>Add text here.</em></p>
 <p>Load the susieR and ebverse packages:</p>
-<pre class="r"><code># library(susieR)
-# library(ebverse)</code></pre>
+<pre class="r"><code>library(susieR)
+library(ebverse)</code></pre>
 <p>Set the seed to ensure that the results are reproducible:</p>
 <pre class="r"><code>set.seed(1)</code></pre>
 <p>Add text here.</p>
 <pre class="r"><code>load(file.path(system.file(package=&quot;ebverse&quot;),&quot;datasets/jsm_data.RData&quot;))
 n &lt;- nrow(X)
 J &lt;- ncol(X)
+rownames(X) &lt;- paste0(&quot;s&quot;,1:n)
+names(y) &lt;- paste0(&quot;s&quot;,1:n)
 dim(X)
 # [1] 574 740</code></pre>
 <div id="single-effect-regression" class="section level2">
 <h2>Single effect regression</h2>
 <p>Fit a single effect regression using the susieR package:</p>
-<pre class="r"><code>fit_susie &lt;- susie(X,y,L = 1,standardize = FALSE)
-# [1] -712.1
-# [1] -687.1
-# [1] -687.1</code></pre>
+<pre class="r"><code>fit_susie &lt;- susie(X,y,L = 1,standardize = FALSE)</code></pre>
 <p>Add text here.</p>
 <pre class="r"><code>par(mar = c(4,4,2,1))
 pips &lt;- fit_susie$pip
@@ -803,7 +594,7 @@ j &lt;- fit_susie$sets$cs[[1]]
 points(j,pips[j],pch = 1,col = &quot;dodgerblue&quot;,cex = 1.25)
 j &lt;- which(b_true != 0)
 points(j,pips[j],pch = 20,col = &quot;red&quot;)</code></pre>
-<p><img src="figure/ser_demo.Rmd/pip-plot-susie-1.png" width="600" style="display: block; margin: auto;" /></p>
+<p><img src="figure/susie_demo.Rmd/pip-plot-susie-1.png" width="600" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pip-plot-susie-1">
 Past versions of pip-plot-susie-1.png
@@ -828,13 +619,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/753ca924635b3f51aa9e93fc25879c59b92d9d14/docs/figure/ser_demo.Rmd/pip-plot-susie-1.png" target="_blank">753ca92</a>
+<a href="https://github.com/stephenslab/ebverse-workflowr/blob/7b03fc01e5283c97c3d147477ff0b2544c8f8eac/docs/figure/susie_demo.Rmd/pip-plot-susie-1.png" target="_blank">7b03fc0</a>
 </td>
 <td>
 Peter Carbonetto
 </td>
 <td>
-2026-10-23
+2026-11-16
 </td>
 </tr>
 </tbody>
@@ -872,8 +663,8 @@ cat(&quot;susie s0:&quot;,format(fit_susie$V,digits = 8),&quot;\n&quot;)
 cat(&quot;SER s0:  &quot;,format(fit_ser$prior$prior_variance,digits = 8),&quot;\n&quot;)
 cat(&quot;susie logBF:&quot;,format(fit_susie$lbf,digits = 10),&quot;\n&quot;)
 cat(&quot;SER logBF:  &quot;,format(fit_ser$lbf,digits = 10),&quot;\n&quot;)
-# [1] -3.105e-11  1.179e-11
-# [1] -1.499e-10  8.700e-12
+# [1] -3.105305e-11  1.179251e-11
+# [1] -1.499380e-10  8.699978e-12
 # susie s0: 0.77969921 
 # SER s0:   0.77969926 
 # susie logBF: 150.9309227 
@@ -886,7 +677,7 @@ abline(a = 0,b = 1,lty = &quot;dotted&quot;,col = &quot;magenta&quot;)
 plot(pm_susie,fit_ser$posterior$mean,pch = 20,
      xlab = &quot;susieR&quot;,ylab = &quot;ebverse&quot;,main = &quot;posterior mean coefs&quot;)
 abline(a = 0,b = 1,lty = &quot;dotted&quot;,col = &quot;magenta&quot;)</code></pre>
-<p><img src="figure/ser_demo.Rmd/unnamed-chunk-2-1.png" width="630" style="display: block; margin: auto;" /></p>
+<p><img src="figure/susie_demo.Rmd/unnamed-chunk-2-1.png" width="630" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
 Past versions of unnamed-chunk-2-1.png
@@ -911,13 +702,13 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/stephenslab/ebverse-workflowr/blob/753ca924635b3f51aa9e93fc25879c59b92d9d14/docs/figure/ser_demo.Rmd/unnamed-chunk-2-1.png" target="_blank">753ca92</a>
+<a href="https://github.com/stephenslab/ebverse-workflowr/blob/7b03fc01e5283c97c3d147477ff0b2544c8f8eac/docs/figure/susie_demo.Rmd/unnamed-chunk-2-1.png" target="_blank">7b03fc0</a>
 </td>
 <td>
 Peter Carbonetto
 </td>
 <td>
-2026-10-23
+2026-11-16
 </td>
 </tr>
 </tbody>
@@ -929,11 +720,38 @@ Peter Carbonetto
 <h2>SuSiE</h2>
 <p>Fit a single effect regression with L = 2 single effects using the
 susieR package:</p>
-<pre class="r"><code>fit_susie &lt;- susie(X,y,L = 2,standardize = FALSE)
-# [1] -662.9
-# [1] -595.3
-# [1] -595.3
-# [1] -595.3</code></pre>
+<pre class="r"><code>fit_susie &lt;- susie(X,y,L = 2,standardize = FALSE,verbose = TRUE)
+fit_susie_ss &lt;- susie_suff_stat(XtX = crossprod(X),
+                                Xty = drop(crossprod(X,y)),
+                                yty = drop(crossprod(y)),
+                                n = n,L = 2,verbose = TRUE)
+dat &lt;- prepare_mlm_full_data(X,y,standardize = FALSE)
+ss &lt;- univariate_regression(X,y)
+fit_susie_rss &lt;- susie_rss(bhat = ss$betahat,
+                           shat = ss$sebetahat,
+                           R = cor(X),
+                           L = 2,
+                           verbose = TRUE)
+# WARNING: Providing the sample size (n), or even a rough estimate of n, is highly recommended. Without n, the implicit assumption is n is large (Inf) and the effect sizes are small (close to zero).
+fit_susie$KL - fit_susie$KL
+# [1] &quot;objective:-679.588120279771&quot;
+# [1] &quot;objective:-615.558820813735&quot;
+# [1] &quot;objective:-613.191887307034&quot;
+# [1] &quot;objective:-613.170480040195&quot;
+# [1] &quot;objective:-613.169066812252&quot;
+# [1] &quot;objective:-613.169066542951&quot;
+# [1] &quot;objective:-613.169065998939&quot;
+# [1] &quot;objective:-679.588150772568&quot;
+# [1] &quot;objective:-615.558771932148&quot;
+# [1] &quot;objective:-613.191885661779&quot;
+# [1] &quot;objective:-613.170480158412&quot;
+# [1] &quot;objective:-613.169067181677&quot;
+# [1] &quot;objective:-613.169066912418&quot;
+# [1] &quot;objective:-613.169066368528&quot;
+# [1] &quot;objective:202.38341768888&quot;
+# [1] &quot;objective:203.487610219092&quot;
+# [1] &quot;objective:203.487956395425&quot;
+# [1] 0 0</code></pre>
 <p>Add text here.</p>
 <pre class="r"><code>par(mar = c(4,4,2,1))
 pips &lt;- fit_susie$pip
@@ -944,13 +762,10 @@ j &lt;- fit_susie$sets$cs[[2]]
 points(j,pips[j],pch = 1,col = &quot;darkorange&quot;,cex = 1.5)
 j &lt;- which(b_true != 0)
 points(j,pips[j],pch = 20,col = &quot;red&quot;)</code></pre>
-<p><img src="figure/ser_demo.Rmd/pip-plot-susie-two-effects-1.png" width="600" style="display: block; margin: auto;" /></p>
-<p>Create a susie data set manually:</p>
-<pre class="r"><code>dat &lt;- list(n = n,nvar = J,X = X,y = y,var_y = var(y),
-            ss = prepare_ser_data(X = X,y = y))
-class(dat) &lt;- c(&quot;susie_full_data&quot;,&quot;susie_data&quot;,&quot;list&quot;)</code></pre>
+<p><img src="figure/susie_demo.Rmd/pip-plot-susie-two-effects-1.png" width="600" style="display: block; margin: auto;" /></p>
 <p>Fit a SuSiE model using the new interface. Also test refitting:</p>
-<pre class="r"><code>fit_susie_eb &lt;- init_susie_model(colnames(X),L = 2,
+<pre class="r"><code>dat &lt;- prepare_mlm_full_data(X,y)
+fit_susie_eb &lt;- init_susie_model(colnames(X),L = 2,
                                  control = list(maxiter = 4,paramtol = 1e-8))
 fit_susie_eb &lt;- fit_susie_model(fit_susie_eb,dat,return_data = TRUE)
 fit_susie_eb &lt;- fit_susie_model(fit_susie_eb,dat,return_data = TRUE)
@@ -960,30 +775,33 @@ fit_susie_eb &lt;- fit_susie_model(fit_susie_eb,dat,return_data = TRUE)
 #    1 -6.796e+02 00.4717       NA 8.06e-01 9.5e-01 -5.3e-01
 #    2 -6.132e+02 00.4660 +6.6e+01 8.15e-02 1.2e-01 -5.7e-03
 #    3 -6.132e+02 00.4660 +2.3e-02 3.95e-03 5.3e-03 -2.0e-05
-#    4 -6.132e+02 00.4660 +8.2e-07 1.30e-04 1.5e-04 8.2e-08
+#    4 -6.132e+02 00.4660 +8.2e-07 1.30e-04 1.5e-04 +8.2e-08
 # iter       ELBO   sigma  d(ELBO) delta(b)  d(pip) d(sigma)
 # ---- ---------- ------- -------- -------- ------- --------
-#    1 -6.132e+02 00.4660 +1.9e-10 2.59e-06 2.8e-06 3.6e-09
-#    2 -6.132e+02 00.4660 +2.3e-13 4.78e-08 5.1e-08 7.6e-11
-#    3 -6.132e+02 00.4660 +1.1e-13 8.66e-10 9.2e-10 1.4e-12</code></pre>
+#    1 -6.132e+02 00.4660 +1.9e-10 2.59e-06 2.8e-06 +3.6e-09
+#    2 -6.132e+02 00.4660 +0.0e+00 4.78e-08 5.1e-08 +7.6e-11
+#    3 -6.132e+02 00.4660 +2.3e-13 8.66e-10 9.2e-10 +1.4e-12</code></pre>
 <p>Add text here.</p>
 <pre class="r"><code>pm_susie &lt;- fit_susie$alpha * fit_susie$mu
-print(max(fit_susie$elbo) - fit_susie_eb$elbo)
-print(fit_susie$sigma2 - fit_susie_eb$residual_variance)
-print(fit_susie_eb$ser[[1]]$prior$prior_variance - fit_susie$V[1])
-print(fit_susie_eb$ser[[2]]$prior$prior_variance - fit_susie$V[2])
-print(range(fit_susie_eb$ser[[1]]$posterior$pip - fit_susie$alpha[1,]))
-print(range(fit_susie_eb$ser[[2]]$posterior$pip - fit_susie$alpha[2,]))
-print(range(fit_susie_eb$ser[[1]]$posterior$mean - pm_susie[1,]))
-print(range(fit_susie_eb$ser[[2]]$posterior$mean - pm_susie[2,]))
-# [1] 0.00002205
-# [1] -8.538e-08
-# [1] -1.261e-06
-# [1] 1.451e-07
-# [1] -2.734e-06  2.800e-06
-# [1] -2.091e-09  2.095e-09
-# [1] -2.615e-06  2.006e-06
-# [1] -1.526e-07  2.353e-13</code></pre>
+max(fit_susie$elbo) - fit_susie_eb$elbo
+fit_susie$KL - sapply(fit_susie_eb$ser,&quot;[[&quot;,&quot;KL&quot;)
+fit_susie$sigma2 - fit_susie_eb$residual_variance
+fit_susie_eb$ser[[1]]$prior$prior_variance - fit_susie$V[1]
+fit_susie_eb$ser[[2]]$prior$prior_variance - fit_susie$V[2]
+range(fit_susie_eb$ser[[1]]$posterior$pip - fit_susie$alpha[1,])
+range(fit_susie_eb$ser[[2]]$posterior$pip - fit_susie$alpha[2,])
+range(fit_susie_eb$ser[[1]]$posterior$mean - pm_susie[1,])
+range(fit_susie_eb$ser[[2]]$posterior$mean - pm_susie[2,])
+# [1] 2.205341e-05
+#            L1            L2 
+# -8.662453e-06 -1.112523e-05 
+# [1] -8.53769e-08
+# [1] -1.260758e-06
+# [1] 1.451243e-07
+# [1] -2.733578e-06  2.800323e-06
+# [1] -2.090927e-09  2.095061e-09
+# [1] -2.614645e-06  2.005785e-06
+# [1] -1.526132e-07  2.352852e-13</code></pre>
 <p>TO DO: Test <code>init_susie_model</code> and
 <code>fit_susie_model</code> with <span class="math inline">\(L =
 1\)</span>.</p>
@@ -1014,37 +832,29 @@ Session information
 # [1] stats     graphics  grDevices utils     datasets  methods   base     
 # 
 # other attached packages:
-# [1] ebverse_0.1-69  susieR_0.14.4   testthat_3.2.3  workflowr_1.7.1
+# [1] ebverse_0.1-82 susieR_0.14.4 
 # 
 # loaded via a namespace (and not attached):
-#  [1] remotes_2.4.2.1     rlang_1.1.6         magrittr_2.0.3     
-#  [4] git2r_0.33.0        matrixStats_1.2.0   compiler_4.3.3     
-#  [7] getPass_0.2-4       callr_3.8.0         vctrs_0.6.5        
-# [10] RcppZiggurat_0.1.6  stringr_1.5.1       profvis_0.4.0      
-# [13] pkgconfig_2.0.3     crayon_1.5.3        fastmap_1.2.0      
-# [16] ellipsis_0.3.2      promises_1.3.3      rmarkdown_2.29     
-# [19] sessioninfo_1.2.4   ps_1.9.1            purrr_1.0.4        
-# [22] xfun_0.52           Rfast_2.1.0         cachem_1.1.0       
-# [25] jsonlite_2.0.0      later_1.4.2         reshape_0.8.9      
-# [28] irlba_2.3.5.1       parallel_4.3.3      R6_2.6.1           
-# [31] bslib_0.9.0         stringi_1.8.7       RColorBrewer_1.1-3 
-# [34] pkgload_1.5.3       jquerylib_0.1.4     brio_1.1.5         
-# [37] Rcpp_1.1.0          knitr_1.50          usethis_3.2.2      
-# [40] httpuv_1.6.14       Matrix_1.6-5        tidyselect_1.2.1   
-# [43] rstudioapi_0.15.0   dichromat_2.0-0.1   yaml_2.3.10        
-# [46] miniUI_0.1.2        processx_3.8.6      pkgbuild_1.4.8     
-# [49] lattice_0.22-5      tibble_3.3.0        plyr_1.8.9         
-# [52] shiny_1.11.1        withr_3.0.2         evaluate_1.0.4     
-# [55] desc_1.4.3          RcppParallel_5.1.10 urlchecker_1.0.1   
-# [58] pillar_1.11.0       whisker_0.4.1       generics_0.1.4     
-# [61] rprojroot_2.1.1     ggplot2_3.5.2       scales_1.4.0       
-# [64] xtable_1.8-4        glue_1.8.0          tools_4.3.3        
-# [67] fs_1.6.6            grid_4.3.3          devtools_2.4.5     
-# [70] cli_3.6.5           mixsqp_0.3-54       dplyr_1.1.4        
-# [73] gtable_0.3.6        sass_0.4.10         digest_0.6.37      
-# [76] htmlwidgets_1.6.4   farver_2.1.2        memoise_2.0.1      
-# [79] htmltools_0.5.8.1   lifecycle_1.0.5     httr_1.4.7         
-# [82] mime_0.13</code></pre>
+#  [1] sass_0.4.10         generics_0.1.4      stringi_1.8.7      
+#  [4] lattice_0.22-5      digest_0.6.37       magrittr_2.0.3     
+#  [7] evaluate_1.0.4      grid_4.3.3          RColorBrewer_1.1-3 
+# [10] fastmap_1.2.0       rprojroot_2.1.1     workflowr_1.7.1    
+# [13] plyr_1.8.9          jsonlite_2.0.0      Matrix_1.6-5       
+# [16] whisker_0.4.1       reshape_0.8.9       mixsqp_0.3-54      
+# [19] promises_1.3.3      scales_1.4.0        jquerylib_0.1.4    
+# [22] cli_3.6.5           rlang_1.1.6         crayon_1.5.3       
+# [25] cachem_1.1.0        yaml_2.3.10         tools_4.3.3        
+# [28] parallel_4.3.3      dplyr_1.1.4         ggplot2_3.5.2      
+# [31] httpuv_1.6.14       Rfast_2.1.0         RcppZiggurat_0.1.6 
+# [34] vctrs_0.6.5         R6_2.6.1            matrixStats_1.2.0  
+# [37] lifecycle_1.0.5     git2r_0.33.0        stringr_1.5.1      
+# [40] fs_1.6.6            irlba_2.3.5.1       pkgconfig_2.0.3    
+# [43] RcppParallel_5.1.10 pillar_1.11.0       bslib_0.9.0        
+# [46] later_1.4.2         gtable_0.3.6        glue_1.8.0         
+# [49] Rcpp_1.1.0          xfun_0.52           tibble_3.3.0       
+# [52] tidyselect_1.2.1    knitr_1.50          dichromat_2.0-0.1  
+# [55] farver_2.1.2        htmltools_0.5.8.1   rmarkdown_2.29     
+# [58] compiler_4.3.3</code></pre>
 </div>
 </div>
 </div>
