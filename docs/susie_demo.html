@@ -12,7 +12,7 @@
 <meta name="author" content="Peter Carbonetto" />
 
 
-<title>SuSiE: design and implementation</title>
+<title>Design and implementation of SuSiE in the ebverse</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -270,7 +270,8 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">SuSiE: design and implementation</h1>
+<h1 class="title toc-ignore">Design and implementation of SuSiE in the
+ebverse</h1>
 <h4 class="author">Peter Carbonetto</h4>
 
 </div>
@@ -300,7 +301,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2026-11-16
+<strong>Last updated:</strong> 2026-11-19
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -432,15 +433,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomstephenslabebverseworkflowrtree19017ff580b1b471614ec850f35b218e4381991dtargetblank19017ffa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomstephenslabebverseworkflowrtree6ba7562368473442132e2eb34c7a7081c5a1bbe8targetblank6ba7562a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/stephenslab/ebverse-workflowr/tree/19017ff580b1b471614ec850f35b218e4381991d" target="_blank">19017ff</a>
+<a href="https://github.com/stephenslab/ebverse-workflowr/tree/6ba7562368473442132e2eb34c7a7081c5a1bbe8" target="_blank">6ba7562</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomstephenslabebverseworkflowrtree19017ff580b1b471614ec850f35b218e4381991dtargetblank19017ffa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomstephenslabebverseworkflowrtree6ba7562368473442132e2eb34c7a7081c5a1bbe8targetblank6ba7562a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -450,7 +451,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/stephenslab/ebverse-workflowr/tree/19017ff580b1b471614ec850f35b218e4381991d" target="_blank">19017ff</a>.
+<a href="https://github.com/stephenslab/ebverse-workflowr/tree/6ba7562368473442132e2eb34c7a7081c5a1bbe8" target="_blank">6ba7562</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -464,9 +465,7 @@ depends on. Below is the status of the Git repository when the results
 were generated:
 </p>
 <pre><code>
-Ignored files:
-    Ignored:    analysis/figure/
-
+working directory clean
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not
@@ -510,6 +509,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/stephenslab/ebverse-workflowr/blob/6ba7562368473442132e2eb34c7a7081c5a1bbe8/analysis/susie_demo.Rmd" target="_blank">6ba7562</a>
+</td>
+<td>
+Peter Carbonetto
+</td>
+<td>
+2026-11-19
+</td>
+<td>
+wflow_publish("susie_demo.Rmd", verbose = T, view = F)
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/stephenslab/ebverse-workflowr/blob/8a86eb13f7b30effdb0899933df9748de6a0af66/analysis/susie_demo.Rmd" target="_blank">8a86eb1</a>
+</td>
+<td>
+Peter Carbonetto
+</td>
+<td>
+2026-11-19
+</td>
+<td>
+Added comparison of susie and susie_rss to check for equivalence.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/stephenslab/ebverse-workflowr/fdcd9822d61d589a0bd0bde4a4d6c2f7cb4a2df2/docs/susie_demo.html" target="_blank">fdcd982</a>
+</td>
+<td>
+Peter Carbonetto
+</td>
+<td>
+2026-11-16
+</td>
+<td>
+Ran wflow_publish("susie_demo.Rmd").
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -582,6 +632,10 @@ rownames(X) &lt;- paste0(&quot;s&quot;,1:n)
 names(y) &lt;- paste0(&quot;s&quot;,1:n)
 dim(X)
 # [1] 574 740</code></pre>
+<p>Multiply the quantitative trait by some arbitrary number just to make
+sure that the results are still valid when the variance of Y is not
+1.</p>
+<pre class="r"><code>y &lt;- 2*y</code></pre>
 <div id="single-effect-regression" class="section level2">
 <h2>Single effect regression</h2>
 <p>Fit a single effect regression using the susieR package:</p>
@@ -646,15 +700,15 @@ fit_ser &lt;- fit_ser_model(fit_ser)
 # parameter tolerance is met; model fitting is stopped
 # iter log-Bayes factor   sigma0 d(logBF) d(sigma0)
 # ---- ---------------- -------- -------- ---------
-#    1 +1.509167145e+02 07.8e-01       NA -2.19e-01
-#    2 +1.509309112e+02 07.8e-01 +1.4e-02 -1.07e-03
+#    1 +1.504472087e+02 03.1e+00       NA +2.08e+00
+#    2 +1.509308682e+02 03.1e+00 +4.8e-01 +4.07e-02
 # iter log-Bayes factor   sigma0 d(logBF) d(sigma0)
 # ---- ---------------- -------- -------- ---------
-#    1 +1.509309117e+02 07.8e-01 +0.0e+00 -6.67e-06
-#    2 +1.509309117e+02 07.8e-01 +1.8e-11 -4.17e-08
-#    3 +1.509309117e+02 07.8e-01 +0.0e+00 -2.61e-10
-#    4 +1.509309117e+02 07.8e-01 +0.0e+00 -1.63e-12
-#    5 +1.509309117e+02 07.8e-01 +0.0e+00 -1.02e-14</code></pre>
+#    1 +1.509309117e+02 03.1e+00 +0.0e+00 +2.58e-04
+#    2 +1.509309117e+02 03.1e+00 +1.7e-09 +1.61e-06
+#    3 +1.509309117e+02 03.1e+00 +8.5e-14 +1.01e-08
+#    4 +1.509309117e+02 03.1e+00 -2.8e-14 +6.30e-11
+#    5 +1.509309117e+02 03.1e+00 +0.0e+00 +3.94e-13</code></pre>
 <p>Add text there.</p>
 <pre class="r"><code>pm_susie &lt;- fit_susie$alpha * fit_susie$mu
 range(fit_susie$pip - fit_ser$posterior$pip)
@@ -663,10 +717,10 @@ cat(&quot;susie s0:&quot;,format(fit_susie$V,digits = 8),&quot;\n&quot;)
 cat(&quot;SER s0:  &quot;,format(fit_ser$prior$prior_variance,digits = 8),&quot;\n&quot;)
 cat(&quot;susie logBF:&quot;,format(fit_susie$lbf,digits = 10),&quot;\n&quot;)
 cat(&quot;SER logBF:  &quot;,format(fit_ser$lbf,digits = 10),&quot;\n&quot;)
-# [1] -3.105305e-11  1.179251e-11
-# [1] -1.499380e-10  8.699978e-12
-# susie s0: 0.77969921 
-# SER s0:   0.77969926 
+# [1] -4.502704e-12  1.187384e-11
+# [1] -6.651667e-12  1.146228e-10
+# susie s0: 3.1187971 
+# SER s0:   3.118797 
 # susie logBF: 150.9309227 
 # SER logBF:   150.9309117</code></pre>
 <p>Add text here.</p>
@@ -734,20 +788,20 @@ fit_susie_rss &lt;- susie_rss(bhat = ss$betahat,
                            verbose = TRUE)
 # WARNING: Providing the sample size (n), or even a rough estimate of n, is highly recommended. Without n, the implicit assumption is n is large (Inf) and the effect sizes are small (close to zero).
 fit_susie$KL - fit_susie$KL
-# [1] &quot;objective:-679.588120279771&quot;
-# [1] &quot;objective:-615.558820813735&quot;
-# [1] &quot;objective:-613.191887307034&quot;
-# [1] &quot;objective:-613.170480040195&quot;
-# [1] &quot;objective:-613.169066812252&quot;
-# [1] &quot;objective:-613.169066542951&quot;
-# [1] &quot;objective:-613.169065998939&quot;
-# [1] &quot;objective:-679.588150772568&quot;
-# [1] &quot;objective:-615.558771932148&quot;
-# [1] &quot;objective:-613.191885661779&quot;
-# [1] &quot;objective:-613.170480158412&quot;
-# [1] &quot;objective:-613.169067181677&quot;
-# [1] &quot;objective:-613.169066912418&quot;
-# [1] &quot;objective:-613.169066368528&quot;
+# [1] &quot;objective:-1077.45460190386&quot;
+# [1] &quot;objective:-1013.42530241946&quot;
+# [1] &quot;objective:-1011.05836894687&quot;
+# [1] &quot;objective:-1011.03696168044&quot;
+# [1] &quot;objective:-1011.03554845366&quot;
+# [1] &quot;objective:-1011.03554818436&quot;
+# [1] &quot;objective:-1011.03554764035&quot;
+# [1] &quot;objective:-1077.45463241902&quot;
+# [1] &quot;objective:-1013.42525358398&quot;
+# [1] &quot;objective:-1011.05836730321&quot;
+# [1] &quot;objective:-1011.03696179971&quot;
+# [1] &quot;objective:-1011.03554882309&quot;
+# [1] &quot;objective:-1011.03554855383&quot;
+# [1] &quot;objective:-1011.03554800994&quot;
 # [1] &quot;objective:202.38341768888&quot;
 # [1] &quot;objective:203.487610219092&quot;
 # [1] &quot;objective:203.487956395425&quot;
@@ -763,6 +817,43 @@ points(j,pips[j],pch = 1,col = &quot;darkorange&quot;,cex = 1.5)
 j &lt;- which(b_true != 0)
 points(j,pips[j],pch = 20,col = &quot;red&quot;)</code></pre>
 <p><img src="figure/susie_demo.Rmd/pip-plot-susie-two-effects-1.png" width="600" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pip-plot-susie-two-effects-1">
+Past versions of pip-plot-susie-two-effects-1.png
+</button>
+</p>
+<div id="fig-pip-plot-susie-two-effects-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/stephenslab/ebverse-workflowr/blob/fdcd9822d61d589a0bd0bde4a4d6c2f7cb4a2df2/docs/figure/susie_demo.Rmd/pip-plot-susie-two-effects-1.png" target="_blank">fdcd982</a>
+</td>
+<td>
+Peter Carbonetto
+</td>
+<td>
+2026-11-16
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Fit a SuSiE model using the new interface. Also test refitting:</p>
 <pre class="r"><code>dat &lt;- prepare_mlm_full_data(X,y)
 fit_susie_eb &lt;- init_susie_model(colnames(X),L = 2,
@@ -772,16 +863,16 @@ fit_susie_eb &lt;- fit_susie_model(fit_susie_eb,dat,return_data = TRUE)
 # parameter estimation tolerance is met; model fitting is stopped
 # iter       ELBO   sigma  d(ELBO) delta(b)  d(pip) d(sigma)
 # ---- ---------- ------- -------- -------- ------- --------
-#    1 -6.796e+02 00.4717       NA 8.06e-01 9.5e-01 -5.3e-01
-#    2 -6.132e+02 00.4660 +6.6e+01 8.15e-02 1.2e-01 -5.7e-03
-#    3 -6.132e+02 00.4660 +2.3e-02 3.95e-03 5.3e-03 -2.0e-05
-#    4 -6.132e+02 00.4660 +8.2e-07 1.30e-04 1.5e-04 +8.2e-08
+#    1 -1.083e+03 01.8701       NA 1.69e+00 1.0e+00 +8.7e-01
+#    2 -1.011e+03 01.8638 +7.2e+01 8.09e-01 4.1e-01 -6.2e-03
+#    3 -1.011e+03 01.8638 +2.1e-03 7.69e-03 4.6e-03 -9.6e-06
+#    4 -1.011e+03 01.8638 +2.0e-07 1.63e-04 8.8e-05 +3.7e-07
 # iter       ELBO   sigma  d(ELBO) delta(b)  d(pip) d(sigma)
 # ---- ---------- ------- -------- -------- ------- --------
-#    1 -6.132e+02 00.4660 +1.9e-10 2.59e-06 2.8e-06 +3.6e-09
-#    2 -6.132e+02 00.4660 +0.0e+00 4.78e-08 5.1e-08 +7.6e-11
-#    3 -6.132e+02 00.4660 +2.3e-13 8.66e-10 9.2e-10 +1.4e-12</code></pre>
-<p>Add text here.</p>
+#    1 -1.011e+03 01.8638 +7.2e-11 3.09e-06 1.6e-06 +9.4e-09
+#    2 -1.011e+03 01.8638 -1.1e-13 5.63e-08 3.0e-08 +1.8e-10
+#    3 -1.011e+03 01.8638 -1.1e-13 1.02e-09 5.4e-10 +3.3e-12</code></pre>
+<p>ADD TEXT HERE.</p>
 <pre class="r"><code>pm_susie &lt;- fit_susie$alpha * fit_susie$mu
 max(fit_susie$elbo) - fit_susie_eb$elbo
 fit_susie$KL - sapply(fit_susie_eb$ser,&quot;[[&quot;,&quot;KL&quot;)
@@ -792,19 +883,122 @@ range(fit_susie_eb$ser[[1]]$posterior$pip - fit_susie$alpha[1,])
 range(fit_susie_eb$ser[[2]]$posterior$pip - fit_susie$alpha[2,])
 range(fit_susie_eb$ser[[1]]$posterior$mean - pm_susie[1,])
 range(fit_susie_eb$ser[[2]]$posterior$mean - pm_susie[2,])
-# [1] 2.205341e-05
+# [1] 2.20534e-05
 #            L1            L2 
-# -8.662453e-06 -1.112523e-05 
-# [1] -8.53769e-08
-# [1] -1.260758e-06
-# [1] 1.451243e-07
-# [1] -2.733578e-06  2.800323e-06
-# [1] -2.090927e-09  2.095061e-09
-# [1] -2.614645e-06  2.005785e-06
-# [1] -1.526132e-07  2.352852e-13</code></pre>
-<p>TO DO: Test <code>init_susie_model</code> and
-<code>fit_susie_model</code> with <span class="math inline">\(L =
-1\)</span>.</p>
+# -8.662328e-06 -1.112563e-05 
+# [1] -3.415064e-07
+# [1] -5.229721e-06
+# [1] 1.061259e-06
+# [1] -2.733562e-06  2.800287e-06
+# [1] -2.091066e-09  2.095204e-09
+# [1] -5.229436e-06  4.011406e-06
+# [1] -3.065367e-07  4.724679e-13</code></pre>
+<p>Test <code>init_susie_model</code> and <code>fit_susie_model</code>
+with <span class="math inline">\(L = 1\)</span>.</p>
+<pre class="r"><code>fit_susie &lt;- susie(X,y,L = 1,standardize = FALSE,tol = 1e-8)
+fit_susie_eb_l1 &lt;- init_susie_model(colnames(X),L = 1)
+fit_susie_eb_l1 &lt;- fit_susie_model(fit_susie_eb_l1,dat,return_data = TRUE)
+# parameter estimation tolerance is met; model fitting is stopped
+fit_susie$lbf - fit_susie_eb_l1$lbf
+max(fit_susie$elbo) - max(fit_susie_eb_l1$elbo)
+range(fit_susie$pip - fit_susie_eb_l1$ser[[1]]$posterior$pip)
+# iter       ELBO   sigma  d(ELBO) delta(b)  d(pip) d(sigma)
+# ---- ---------- ------- -------- -------- ------- --------
+#    1 -1.272e+03 02.5600       NA 0.00e+00 9.5e-01 +1.6e+00
+#    2 -1.094e+03 02.5667 +1.8e+02 0.00e+00 2.9e-01 +6.7e-03
+#    3 -1.094e+03 02.5667 +9.9e-04 0.00e+00 9.1e-04 +2.8e-05
+#    4 -1.094e+03 02.5667 +1.7e-08 0.00e+00 3.8e-06 +1.2e-07
+#    5 -1.094e+03 02.5667 +2.3e-13 0.00e+00 1.6e-08 +4.8e-10
+# [1] 1.096974e-05
+# [1] 1.10268e-05
+# [1] -3.368816e-11  4.823111e-11</code></pre>
+</div>
+<div id="susie-with-summary-data" class="section level2">
+<h2>SuSiE with summary data</h2>
+<p>Compute the single-SNP summary statistics:</p>
+<pre class="r"><code>ss &lt;- data.frame(bhat = rep(0,J),shat = rep(0,J))
+rownames(ss) &lt;- colnames(X)
+for (j in 1:J) {
+  x &lt;- X[,j]
+  res &lt;- lm(y ~ x)
+  ss[j,&quot;bhat&quot;] &lt;- summary(res)$coefficients[&quot;x&quot;,&quot;Estimate&quot;]
+  ss[j,&quot;shat&quot;] &lt;- summary(res)$coefficients[&quot;x&quot;,&quot;Std. Error&quot;]
+}
+R &lt;- cor(X)</code></pre>
+<p>Compare <code>fit_susie</code> and <code>fit_susie_rss</code>:</p>
+<pre class="r"><code>fit_susie &lt;- susie(X,y,L = 2,standardize = FALSE,verbose = TRUE)
+fit_susie_rss &lt;- susie_rss(bhat = ss$bhat,shat = ss$shat,R = R,
+                           n = n,var_y = var(y),L = 2,
+                           estimate_residual_variance = TRUE,
+                           estimate_prior_variance = TRUE,
+                           verbose = TRUE)
+# HINT: For estimate_residual_variance = TRUE, please check that R is the &quot;in-sample&quot; LD matrix; that is, the correlation matrix obtained using the exact same data matrix X that was used for the other summary statistics. Also note, when covariates are included in the univariate regressions that produced the summary statistics, also consider removing these effects from X before computing R.
+range(fit_susie$pip - fit_susie_rss$pip)
+fit_susie$sigma2 - fit_susie_rss$sigma2
+max(fit_susie_rss$elbo) - max(fit_susie$elbo)
+plot(fit_susie$alpha * fit_susie$mu,
+     fit_susie_rss$alpha * fit_susie_rss$mu,
+     pch = 20)</code></pre>
+<p><img src="figure/susie_demo.Rmd/susie-vs-susie-rss-1.png" width="840" style="display: block; margin: auto;" /></p>
+<pre><code># [1] &quot;objective:-1077.45460190386&quot;
+# [1] &quot;objective:-1013.42530241946&quot;
+# [1] &quot;objective:-1011.05836894687&quot;
+# [1] &quot;objective:-1011.03696168044&quot;
+# [1] &quot;objective:-1011.03554845366&quot;
+# [1] &quot;objective:-1011.03554818436&quot;
+# [1] &quot;objective:-1011.03554764035&quot;
+# [1] &quot;objective:-1077.4546324322&quot;
+# [1] &quot;objective:-1013.42525361093&quot;
+# [1] &quot;objective:-1011.05836730381&quot;
+# [1] &quot;objective:-1011.0369618&quot;
+# [1] &quot;objective:-1011.03554882309&quot;
+# [1] &quot;objective:-1011.03554855383&quot;
+# [1] &quot;objective:-1011.03554800994&quot;
+# [1] -9.442058e-07  7.848824e-07
+# [1] 2.794682e-08
+# [1] -3.695853e-07</code></pre>
+<p>Now run SuSiE with summary statistics using the new interface:</p>
+<pre class="r"><code>bhat &lt;- setNames(ss$bhat,rownames(ss))
+sehat &lt;- setNames(ss$shat,rownames(ss))
+dat_ss &lt;- prepare_mlm_summary_data(R = R,bhat = bhat,sehat = sehat,
+                                   n = n,var_y = var(y))
+fit_susie_ss_eb &lt;- init_susie_model(colnames(X),L = 2,
+                                    control = list(paramtol = 1e-8))
+fit_susie_ss_eb &lt;- fit_susie_model(fit_susie_ss_eb,dat_ss,return_data = TRUE)
+# parameter estimation tolerance is met; model fitting is stopped
+# iter       ELBO   sigma  d(ELBO) delta(b)  d(pip) d(sigma)
+# ---- ---------- ------- -------- -------- ------- --------
+#    1 -1.083e+03 01.8701       NA 1.69e+00 1.0e+00 +8.7e-01
+#    2 -1.011e+03 01.8638 +7.2e+01 8.09e-01 4.1e-01 -6.2e-03
+#    3 -1.011e+03 01.8638 +2.1e-03 7.69e-03 4.6e-03 -9.6e-06
+#    4 -1.011e+03 01.8638 +2.0e-07 1.63e-04 8.8e-05 +3.7e-07
+#    5 -1.011e+03 01.8638 +7.2e-11 3.09e-06 1.6e-06 +9.4e-09
+#    6 -1.011e+03 01.8638 -1.1e-13 5.63e-08 3.0e-08 +1.8e-10
+#    7 -1.011e+03 01.8638 +0.0e+00 1.02e-09 5.4e-10 +3.3e-12</code></pre>
+<p>Check that the SuSiE fits using the individual-level data and using
+the summary data give the same result:</p>
+<pre class="r"><code>range(fit_susie_eb$progress - fit_susie_ss_eb$progress,na.rm = TRUE)
+fit_susie_eb$residual_variance - fit_susie_ss_eb$residual_variance
+fit_susie_eb$ser[[1]]$prior$prior_variance -
+  fit_susie_ss_eb$ser[[1]]$prior$prior_variance
+fit_susie_eb$ser[[2]]$prior$prior_variance -
+  fit_susie_ss_eb$ser[[2]]$prior$prior_variance
+range(fit_susie_eb$ser[[1]]$posterior$pip
+      - fit_susie_ss_eb$ser[[1]]$posterior$pip)
+range(fit_susie_eb$ser[[2]]$posterior$pip
+      - fit_susie_ss_eb$ser[[2]]$posterior$pip)
+range(fit_susie_eb$ser[[1]]$posterior$mean
+      - fit_susie_ss_eb$ser[[1]]$posterior$mean)
+range(fit_susie_eb$ser[[2]]$posterior$mean
+      - fit_susie_ss_eb$ser[[2]]$posterior$mean)
+# [1] -2.273737e-12  3.865352e-12
+# [1] -1.398881e-14
+# [1] 1.731948e-14
+# [1] 3.819167e-14
+# [1] -1.982858e-13  1.351141e-13
+# [1] -1.149688e-15  1.332268e-15
+# [1] -3.187173e-13  2.206013e-13
+# [1] -1.310063e-14  6.052315e-20</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -832,7 +1026,7 @@ Session information
 # [1] stats     graphics  grDevices utils     datasets  methods   base     
 # 
 # other attached packages:
-# [1] ebverse_0.1-82 susieR_0.14.4 
+# [1] ebverse_0.1-95 susieR_0.14.4 
 # 
 # loaded via a namespace (and not attached):
 #  [1] sass_0.4.10         generics_0.1.4      stringi_1.8.7      
