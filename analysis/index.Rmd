@@ -4,5 +4,5 @@ site: workflowr::wflow_site
 output: workflowr::wflow_html
 ---
 
-+ [SuSiE: design and implementation](susie_demo.html)
++ [Design and implementation of SuSiE in the ebverse](susie_demo.html)
 
