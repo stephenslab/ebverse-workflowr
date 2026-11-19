@@ -1,5 +1,5 @@
 ---
-title: "SuSiE: design and implementation"
+title: "Design and implementation of SuSiE in the ebverse"
 author: Peter Carbonetto
 output: workflowr::wflow_html
 ---
@@ -15,7 +15,7 @@ Load the susieR and ebverse packages:
 
 ```{r load-pkgs}
 library(susieR)
-# library(ebverse)
+library(ebverse)
 ```
 
 Set the seed to ensure that the results are reproducible:
@@ -33,6 +33,13 @@ J <- ncol(X)
 rownames(X) <- paste0("s",1:n)
 names(y) <- paste0("s",1:n)
 dim(X)
+```
+
+Multiply the quantitative trait by some arbitrary number just to make
+sure that the results are still valid when the variance of Y is not 1.
+
+```{r scale-y}
+y <- 2*y
 ```
 
 Single effect regression
@@ -187,7 +194,7 @@ for (j in 1:J) {
 R <- cor(X)
 ```
 
-ADD TEXT HERE.
+Compare `fit_susie` and `fit_susie_rss`:
 
 ```{r susie-vs-susie-rss}
 fit_susie <- susie(X,y,L = 2,standardize = FALSE,verbose = TRUE)
@@ -202,4 +209,36 @@ max(fit_susie_rss$elbo) - max(fit_susie$elbo)
 plot(fit_susie$alpha * fit_susie$mu,
      fit_susie_rss$alpha * fit_susie_rss$mu,
      pch = 20)
+```
+
+Now run SuSiE with summary statistics using the new interface:
+
+```{r susie-rss-ebverse}
+bhat <- setNames(ss$bhat,rownames(ss))
+sehat <- setNames(ss$shat,rownames(ss))
+dat_ss <- prepare_mlm_summary_data(R = R,bhat = bhat,sehat = sehat,
+                                   n = n,var_y = var(y))
+fit_susie_ss_eb <- init_susie_model(colnames(X),L = 2,
+                                    control = list(paramtol = 1e-8))
+fit_susie_ss_eb <- fit_susie_model(fit_susie_ss_eb,dat_ss,return_data = TRUE)
+```
+
+Check that the SuSiE fits using the individual-level data and using
+the summary data give the same result:
+
+```{r susie-vs-susie-rss-ebverse}
+range(fit_susie_eb$progress - fit_susie_ss_eb$progress,na.rm = TRUE)
+fit_susie_eb$residual_variance - fit_susie_ss_eb$residual_variance
+fit_susie_eb$ser[[1]]$prior$prior_variance -
+  fit_susie_ss_eb$ser[[1]]$prior$prior_variance
+fit_susie_eb$ser[[2]]$prior$prior_variance -
+  fit_susie_ss_eb$ser[[2]]$prior$prior_variance
+range(fit_susie_eb$ser[[1]]$posterior$pip
+      - fit_susie_ss_eb$ser[[1]]$posterior$pip)
+range(fit_susie_eb$ser[[2]]$posterior$pip
+      - fit_susie_ss_eb$ser[[2]]$posterior$pip)
+range(fit_susie_eb$ser[[1]]$posterior$mean
+      - fit_susie_ss_eb$ser[[1]]$posterior$mean)
+range(fit_susie_eb$ser[[2]]$posterior$mean
+      - fit_susie_ss_eb$ser[[2]]$posterior$mean)
 ```
