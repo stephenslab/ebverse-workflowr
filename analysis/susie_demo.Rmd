@@ -15,7 +15,7 @@ Load the susieR and ebverse packages:
 
 ```{r load-pkgs}
 library(susieR)
-library(ebverse)
+# library(ebverse)
 ```
 
 Set the seed to ensure that the results are reproducible:
@@ -144,7 +144,7 @@ fit_susie_eb <- fit_susie_model(fit_susie_eb,dat,return_data = TRUE)
 fit_susie_eb <- fit_susie_model(fit_susie_eb,dat,return_data = TRUE)
 ```
 
-Add text here.
+ADD TEXT HERE.
 
 ```{r susie-ebverse-checks}
 pm_susie <- fit_susie$alpha * fit_susie$mu
@@ -159,4 +159,47 @@ range(fit_susie_eb$ser[[1]]$posterior$mean - pm_susie[1,])
 range(fit_susie_eb$ser[[2]]$posterior$mean - pm_susie[2,])
 ```
 
-TO DO: Test `init_susie_model` and `fit_susie_model` with $L = 1$.
+Test `init_susie_model` and `fit_susie_model` with $L = 1$.
+
+```{r test-susie-l1}
+fit_susie <- susie(X,y,L = 1,standardize = FALSE,tol = 1e-8)
+fit_susie_eb_l1 <- init_susie_model(colnames(X),L = 1)
+fit_susie_eb_l1 <- fit_susie_model(fit_susie_eb_l1,dat,return_data = TRUE)
+fit_susie$lbf - fit_susie_eb_l1$lbf
+max(fit_susie$elbo) - max(fit_susie_eb_l1$elbo)
+range(fit_susie$pip - fit_susie_eb_l1$ser[[1]]$posterior$pip)
+```
+
+SuSiE with summary data
+-----------------------
+
+Compute the single-SNP summary statistics:
+
+```{r summary-stats}
+ss <- data.frame(bhat = rep(0,J),shat = rep(0,J))
+rownames(ss) <- colnames(X)
+for (j in 1:J) {
+  x <- X[,j]
+  res <- lm(y ~ x)
+  ss[j,"bhat"] <- summary(res)$coefficients["x","Estimate"]
+  ss[j,"shat"] <- summary(res)$coefficients["x","Std. Error"]
+}
+R <- cor(X)
+```
+
+ADD TEXT HERE.
+
+```{r susie-vs-susie-rss}
+fit_susie <- susie(X,y,L = 2,standardize = FALSE,verbose = TRUE)
+fit_susie_rss <- susie_rss(bhat = ss$bhat,shat = ss$shat,R = R,
+                           n = n,var_y = var(y),L = 2,
+						   estimate_residual_variance = TRUE,
+						   estimate_prior_variance = TRUE,
+						   verbose = TRUE)
+range(fit_susie$pip - fit_susie_rss$pip)
+fit_susie$sigma2 - fit_susie_rss$sigma2
+max(fit_susie_rss$elbo) - max(fit_susie$elbo)
+plot(fit_susie$alpha * fit_susie$mu,
+     fit_susie_rss$alpha * fit_susie_rss$mu,
+     pch = 20)
+```
