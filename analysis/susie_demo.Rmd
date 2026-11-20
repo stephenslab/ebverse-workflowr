@@ -177,6 +177,14 @@ max(fit_susie$elbo) - max(fit_susie_eb_l1$elbo)
 range(fit_susie$pip - fit_susie_eb_l1$ser[[1]]$posterior$pip)
 ```
 
+Test out the ebverse interface:
+
+```{r susie-ebverse-more, fig.height=2.5, fig.width=2.5}
+head(coef(fit_susie_eb))
+head(residuals(fit_susie_eb))
+plot(fit_susie_eb)
+```
+
 SuSiE with summary data
 -----------------------
 
@@ -242,3 +250,4 @@ range(fit_susie_eb$ser[[1]]$posterior$mean
 range(fit_susie_eb$ser[[2]]$posterior$mean
       - fit_susie_ss_eb$ser[[2]]$posterior$mean)
 ```
+
