@@ -166,6 +166,14 @@ range(fit_susie_eb$ser[[1]]$posterior$mean - pm_susie[1,])
 range(fit_susie_eb$ser[[2]]$posterior$mean - pm_susie[2,])
 ```
 
+Compare the least-squares estimates vs. the fitted values:
+
+```{r lse-vs-fitted, fig.height=3.5, fig.width=3}
+plot(fit_susie_eb$ss$bhat,fit_susie_eb$fitted_values,pch = 20,
+     xlab = "least-squares estimates",ylab = "fitted values")
+abline(a = 0,b = 1,lty = "dotted",col = "magenta")
+```
+
 Test `init_susie_model` and `fit_susie_model` with $L = 1$.
 
 ```{r test-susie-l1}
