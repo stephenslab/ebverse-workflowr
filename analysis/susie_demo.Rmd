@@ -287,6 +287,7 @@ fit_susie_eb <- init_susie_model(colnames(X),L = 10,
 fit_susie_eb <- fit_susie_model(fit_susie_eb,dat)
 t1 <- proc.time()
 t1 - t0
+fit_susie_eb$elbo - max(fit_susie$elbo)
 ```
 
 With summary data:
@@ -310,4 +311,5 @@ fit_susie_ss_eb <- init_susie_model(colnames(X),L = 10,
 fit_susie_ss_eb <- fit_susie_model(fit_susie_ss_eb,dat_ss,return_data = TRUE)
 t1 <- proc.time()
 t1 - t0
+fit_susie_ss_eb$elbo - max(fit_susie_rss$elbo)
 ```
