@@ -307,7 +307,7 @@ dat_ss <- prepare_mlm_summary_data(R = R,bhat = bhat,sehat = sehat,
                                    n = n,var_y = var(y))
 fit_susie_ss_eb <- init_susie_model(colnames(X),L = 10,
                                     control = list(paramtol = 1e-8,
-									maxiter = 10))
+    									           maxiter = 10))
 fit_susie_ss_eb <- fit_susie_model(fit_susie_ss_eb,dat_ss,return_data = TRUE)
 t1 <- proc.time()
 t1 - t0
