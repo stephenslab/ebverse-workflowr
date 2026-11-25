@@ -259,3 +259,55 @@ range(fit_susie_eb$ser[[2]]$posterior$mean
       - fit_susie_ss_eb$ser[[2]]$posterior$mean)
 ```
 
+Add text here.
+
+```{r susie-ebverse-L-3}
+dat <- prepare_mlm_full_data(X,y)
+fit_susie_eb <- init_susie_model(colnames(X),L = 3,
+                                 control = list(paramtol = 1e-6))
+fit_susie_eb <- fit_susie_model(fit_susie_eb,dat)
+```
+
+Benchmarking
+------------
+
+With individual-level data:
+
+```{r benchmark-full-data}
+t0 <- proc.time()
+fit_susie <- susie(X,y,L = 10,standardize = FALSE,tol = 1e-12,
+                   prior_tol = -1,min_abs_corr = 0,max_iter = 10,
+				   verbose = TRUE)
+t1 <- proc.time()
+t1 - t0
+t0 <- proc.time()
+dat <- prepare_mlm_full_data(X,y)
+fit_susie_eb <- init_susie_model(colnames(X),L = 10,
+                                 control = list(paramtol = 1e-8,maxiter = 10))
+fit_susie_eb <- fit_susie_model(fit_susie_eb,dat)
+t1 <- proc.time()
+t1 - t0
+```
+
+With summary data:
+
+```{r benchmark-summary-data}
+t0 <- proc.time()
+fit_susie_rss <- susie_rss(bhat = ss$bhat,shat = ss$shat,R = R,
+                           n = n,var_y = var(y),L = 10,
+						   estimate_residual_variance = TRUE,
+						   estimate_prior_variance = TRUE,
+						   max_iter = 10,min_abs_corr = 0,tol = 1e-12,
+						   prior_tol = -1,verbose = TRUE)
+t1 <- proc.time()
+t1 - t0
+t0 <- proc.time()
+dat_ss <- prepare_mlm_summary_data(R = R,bhat = bhat,sehat = sehat,
+                                   n = n,var_y = var(y))
+fit_susie_ss_eb <- init_susie_model(colnames(X),L = 10,
+                                    control = list(paramtol = 1e-8,
+									maxiter = 10))
+fit_susie_ss_eb <- fit_susie_model(fit_susie_ss_eb,dat_ss,return_data = TRUE)
+t1 <- proc.time()
+t1 - t0
+```
